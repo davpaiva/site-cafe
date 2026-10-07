@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  index.html — A ESTRUTURA DO SITE
+  ============================================================
+  Este é o arquivo principal. O navegador sempre abre o
+  "index.html" primeiro. Ele diz O QUE existe na página:
+  títulos, textos, botões, imagens...
+
+  Tudo aqui é feito de "etiquetas" (tags), assim:
+     <h1>Isto é um título</h1>
+  Abre com <nome> e fecha com </nome>.
+
+  Este bloco de texto é um COMENTÁRIO: começa com os sinais
+  "menor, exclamação, traço, traço" e termina com
+  "traço, traço, maior". O navegador ignora. Serve só para explicar.
+  ============================================================
+-->
+<html lang="pt-BR">
+<head>
+  <!-- O <head> guarda configurações. Nada aqui aparece na página. -->
+  <meta charset="UTF-8">                                   <!-- permite acentos (ç, ã, é) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- funciona bem no celular -->
+  <title>Café Grão de Ouro</title>                          <!-- nome que aparece na aba do navegador -->
+  <link rel="stylesheet" href="style.css">                 <!-- liga o arquivo de aparência -->
+</head>
+
+<body>
+  <!-- O <body> é o que aparece na tela. -->
+
+  <!-- ===== CABEÇALHO (menu do topo) ===== -->
+  <header class="topo">
+    <a href="#inicio" class="logo">☕ Grão de Ouro</a>
+    <nav>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <!-- ===== SEÇÃO 1: INÍCIO (a "vitrine") ===== -->
+  <section id="inicio" class="banner">
+    <h1>Café Grão de Ouro</h1>
+    <p>Café fresquinho, pão de queijo quente e aquele bolo de vó.</p>
+    <a href="#cardapio" class="botao">Ver o cardápio</a>
+  </section>
+
+  <!-- ===== SEÇÃO 2: CARDÁPIO ===== -->
+  <section id="cardapio" class="secao">
+    <h2>Cardápio</h2>
+
+    <!-- Campo de busca: o JavaScript "escuta" o que você digita aqui -->
+    <input type="search" id="busca" placeholder="Buscar produto... (ex.: café)">
+
+    <!-- Botões de filtro. O "data-categoria" diz qual categoria cada botão mostra. -->
+    <div class="filtros">
+      <button class="filtro ativo" data-categoria="Todos">Todos</button>
+      <button class="filtro" data-categoria="Cafés">Cafés</button>
+      <button class="filtro" data-categoria="Salgados">Salgados</button>
+      <button class="filtro" data-categoria="Doces">Doces</button>
+    </div>
+
+    <!-- Esta caixa começa VAZIA. O script.js preenche com os produtos do dados.js -->
+    <div id="lista-produtos" class="grade"></div>
+    <p id="nada-encontrado" class="aviso" hidden>Nenhum produto encontrado.</p>
+  </section>
+
+  <!-- ===== SEÇÃO 3: SOBRE ===== -->
+  <section id="sobre" class="secao clara">
+    <h2>Sobre nós</h2>
+    <p>
+      Abrimos as portas em 2015, numa esquina tranquila do bairro.
+      Torramos nossos próprios grãos toda semana e fazemos os doces
+      aqui mesmo, todos os dias.
+    </p>
+    <h3>Horário de funcionamento</h3>
+    <!-- Esta lista também é preenchida pelo script.js -->
+    <ul id="lista-horarios" class="horarios"></ul>
+  </section>
+
+  <!-- ===== SEÇÃO 4: CONTATO ===== -->
+  <section id="contato" class="secao">
+    <h2>Fale com a gente</h2>
+    <!-- Formulário de exemplo. Ele NÃO envia e-mail de verdade:
+         só mostra uma mensagem de "obrigado" (veja script.js). -->
+    <form id="formulario">
+      <label>Seu nome
+        <input type="text" id="nome" required>
+      </label>
+      <label>Sua mensagem
+        <textarea id="mensagem" rows="4" required></textarea>
+      </label>
+      <button type="submit" class="botao">Enviar</button>
+    </form>
+    <p id="obrigado" class="aviso" hidden></p>
+  </section>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="rodape">
+    <p>Rua das Flores, 123 — Centro · (11) 9 0000-0000</p>
+    <p>Site de exemplo feito para aprender 🙂</p>
+  </footer>
+
+  <!-- Os scripts ficam no final para a página carregar primeiro.
+       A ORDEM IMPORTA: primeiro os dados, depois o código que usa os dados. -->
+  <script src="dados.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

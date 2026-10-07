@@ -1,0 +1,183 @@
+/* ============================================================
+   style.css — A APARÊNCIA DO SITE
+   ============================================================
+   Aqui você diz COMO as coisas aparecem: cores, tamanhos,
+   espaçamentos, fontes.
+
+   O formato é sempre:
+      quem { propriedade: valor; }
+   Exemplo:  h1 { color: red; }   -> todos os títulos h1 ficam vermelhos.
+
+   Um ponto antes do nome (.botao) quer dizer "tudo que tem
+   class="botao" no HTML". Um # (#busca) quer dizer id="busca".
+   ============================================================ */
+
+/* --- 1. AS CORES DO SITE ---
+   Mudou aqui, muda no site inteiro. Experimente trocar a cor principal! */
+:root {
+  --cor-principal: #6b3e26;   /* marrom café */
+  --cor-destaque:  #d4a017;   /* dourado */
+  --cor-fundo:     #fffaf3;   /* creme bem clarinho */
+  --cor-fundo-2:   #f3e7d7;   /* creme mais escuro */
+  --cor-texto:     #2b1d14;   /* quase preto */
+}
+
+/* --- 2. AJUSTES GERAIS --- */
+* { box-sizing: border-box; }           /* facilita o cálculo de tamanhos */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+}
+
+html { scroll-behavior: smooth; }       /* rolagem suave ao clicar no menu */
+
+h1, h2, h3 { line-height: 1.2; }
+
+/* --- 3. CABEÇALHO --- */
+.topo {
+  position: sticky;      /* fica grudado no topo ao rolar */
+  top: 0;
+  z-index: 10;
+  display: flex;         /* coloca logo e menu lado a lado */
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--cor-principal);
+}
+.topo a { color: white; text-decoration: none; }
+.logo { font-weight: bold; font-size: 1.2rem; }
+.topo nav a { margin-left: 16px; }
+.topo nav a:hover { color: var(--cor-destaque); }
+
+/* --- 4. BANNER (seção de início) --- */
+.banner {
+  text-align: center;
+  padding: 80px 20px;
+  color: white;
+  background: linear-gradient(135deg, #3e2316, var(--cor-principal));
+}
+.banner h1 { font-size: 2.5rem; margin: 0 0 10px; }
+.banner p  { font-size: 1.15rem; margin: 0 0 24px; }
+
+/* --- 5. BOTÕES --- */
+.botao {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 999px;            /* cantos bem arredondados */
+  background: var(--cor-destaque);
+  color: var(--cor-texto);
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.botao:hover { filter: brightness(1.1); }
+
+/* --- 6. SEÇÕES --- */
+.secao {
+  max-width: 1000px;
+  margin: 0 auto;                 /* centraliza */
+  padding: 60px 20px;
+}
+.secao.clara {
+  max-width: none;
+  background: var(--cor-fundo-2);
+}
+.secao.clara > * { max-width: 960px; margin-left: auto; margin-right: auto; }
+.secao h2 { color: var(--cor-principal); font-size: 2rem; margin-top: 0; }
+
+/* --- 7. BUSCA E FILTROS --- */
+#busca {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid var(--cor-fundo-2);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.filtro {
+  padding: 8px 16px;
+  border: 2px solid var(--cor-principal);
+  border-radius: 999px;
+  background: white;
+  color: var(--cor-principal);
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.filtro.ativo { background: var(--cor-principal); color: white; }  /* botão selecionado */
+
+/* --- 8. CARTÕES DE PRODUTO --- */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* se ajusta sozinho à tela */
+  gap: 16px;
+}
+.cartao {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+.cartao h3 { margin: 0 0 4px; }
+.cartao .categoria { font-size: 0.8rem; color: #8a6e5a; text-transform: uppercase; }
+.cartao .descricao { margin: 8px 0 12px; font-size: 0.95rem; }
+.cartao .preco { font-size: 1.25rem; font-weight: bold; color: var(--cor-principal); }
+.etiqueta {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--cor-destaque);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* --- 9. HORÁRIOS --- */
+.horarios { list-style: none; padding: 0; }
+.horarios li {
+  display: flex;
+  justify-content: space-between;
+  max-width: 360px;
+  padding: 8px 0;
+  border-bottom: 1px dashed #c9b39c;
+}
+
+/* --- 10. FORMULÁRIO --- */
+form { display: grid; gap: 14px; max-width: 500px; }
+label { display: grid; gap: 4px; font-weight: bold; }
+input[type="text"], textarea {
+  padding: 10px;
+  font: inherit;
+  border: 2px solid var(--cor-fundo-2);
+  border-radius: 8px;
+}
+.aviso { font-weight: bold; color: var(--cor-principal); }
+
+/* --- 11. RODAPÉ --- */
+.rodape {
+  text-align: center;
+  padding: 24px;
+  background: var(--cor-texto);
+  color: #d9c8b6;
+  font-size: 0.9rem;
+}
+.rodape p { margin: 4px 0; }
+
+/* --- 12. CELULAR ---
+   Regras que só valem em telas estreitas (até 600 pixels) */
+@media (max-width: 600px) {
+  .banner { padding: 56px 16px; }
+  .banner h1 { font-size: 2rem; }
+  .secao { padding: 40px 16px; }
+  .topo nav a { margin-left: 0; margin-right: 14px; }
+}
